@@ -1,0 +1,13 @@
+Threshold: 0.95
+Decrement: 0.02
+Accuracy: 0.773
+Columns: 945
+
+Threshold: 0.93
+Decrement: 0.03
+Accuracy: 0.746
+Columns: 764
+
+0.95, 0.1
+764 / 1000 -> 0.764
+Num Columns: 945

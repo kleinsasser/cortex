@@ -1,0 +1,99 @@
+percieved_visual_col = most active visual column after visual input
+percieved_text_col = most active text column after text input
+
+visual_activation = activation of percieved_visual_col
+text_activation = activation of percieved_text_col
+
+validate activations meet minimum activation requirement, if not create new columns
+
+predicted_visual_col = most active visual column after propogated text input (give only text input)
+predicted_text_col = most active text column after propogated visual input (give only visual input)
+
+PROCESS (TEXT -> VISUAL) PREDICTION
+If percieved_visual_col == predicted_visual_col:
+    strengthen   percieved_text_col <-> visual_col
+else:
+    strengthen  percieved_text_col <-> percieved_visual_col
+    weaken  percieved_text_col <-> predicted_visual_col (questionable)
+
+PROCESS (VISUAL -> TEXT) PREDICTION
+If percieved_text_col <-> predicted_text_col:
+    strengthen  percieved_visual_col <-> text_col
+else:
+    strengthen  percieved_visual_col <-> percieved_text_col
+
+
+GENERAL FORM
+
+
+Saved for later:
+def learn_association(self, image, text):
+        # Get the cortical columns most activated by the inputs individually
+
+        # Show cortex the image
+        self.percieve_input(input_type = 'visual', input = image)
+        # Store most active visual column
+        percieved_visual_col = self.get_most_active_col(filter='visual')
+        # If percieved visual col doesn't meet minimum activation, create a new column for input and re-percieve
+        if percieved_visual_col.activation < self.min_visual_activation:
+            percieved_visual_col = self.add_visual_column(image)
+            self.reset()
+            self.percieve_input(input_type = 'visual', input = image)
+        
+        predicted_text_col = self.get_most_active_col(filter='text')
+        self.reset()
+
+        # Show cortex the text
+        self.percieve_input(input_type = 'text', input = text)
+        # Store most active text column
+        percieved_text_col = self.get_most_active_col(filter='text')
+        # Make sure column corresponding to given text exists, if not, create one and re-percieve
+        if percieved_text_col.activation < self.min_text_activation:
+            percieved_text_col = self.add_text_column(text)
+            self.reset()
+            self.percieve_input(input_type = 'text', input = text)
+        
+        predicted_visual_col = self.get_most_active_col(filter='visual')
+        self.reset()
+
+        # # PROCESS (TEXT -> VISUAL) PREDICTION
+        # if percieved_visual_col == predicted_visual_col:
+        #     # Strengthen connection between percieved text and visual
+        #     self.boost_connection(percieved_text_col, percieved_visual_col)
+        # else:
+        #     # Strengthen connection between percieved text and percieved visual
+        #     self.boost_connection(percieved_text_col, percieved_visual_col)
+
+        # # PROCESS (VISUAL -> TEXT) PREDICTION
+        # if percieved_text_col == predicted_text_col:
+        #     # Strengthen connection between percieved visual and text
+        #     pass
+        # else:
+        #     # Strengthen connection between percieved text and percieved visual
+        #     pass
+        self.boost_connection(percieved_text_col, percieved_visual_col)
+
+# def learn_association(self, image, text):
+    #     _, image = image
+    #     _, text = text
+
+    #     # Show cortex the image
+    #     self.percieve_input(input_type = 'visual', input = image)
+    #     # Store most active visual column
+    #     percieved_visual_col = self.get_most_active_col(input_type='visual')
+    #     # If percieved visual col doesn't meet minimum activation, create a new column for input
+    #     if percieved_visual_col == None:
+    #         percieved_visual_col = self.add_column(input_type = 'visual', input = image)
+
+    #     self.reset()
+
+    #     # Show cortex the text
+    #     self.percieve_input(input_type = 'text', input = text)
+    #     # Store most active text column
+    #     percieved_text_col = self.get_most_active_col(input_type='text')
+    #     # Make sure column corresponding to given text exists, if not, create one
+    #     if percieved_text_col == None:
+    #         percieved_text_col = self.add_column(input_type = 'text', input = text)
+
+    #     self.reset()
+    #     self.boost_connection(percieved_text_col, percieved_visual_col)
