@@ -1,6 +1,8 @@
 # A Naive Attempt at Deep Learning Augmented Knowledge Representation and Continuously Learning Agents
 
-(insert image here)
+**Disclaimer: The ideas presented here are underdeveloped due to a lack of free time, but regardless it is a short read and some interesting results are achieved.**
+
+![](adorable.png)
 
 Most AI practitioners agree that these are a few of the most pressing technical challenges to the field today:
 1. State of the art (SOTA) AI models are only good at performing narrowly defined tasks i.e. recognize handwritten digits, recognize objects, generate art in this format/style, etc.
@@ -29,20 +31,20 @@ For example, associating the visual input of your mother’s face with the audib
 ## The Framework
 Using these ideas one might think for a while and come up with something like this:
 
-!(Framework)[Intelligent_agent_framework.png]
+![Framework](Intelligent_agent_framework.png)
 
 Note that which Deep Learning models you include in such a framework is arbitrary and task-specific. If you only care that your final agent be able to associate simple labels with visual objects, one needn’t include audible input or the NLP algorithms. Another important note is that the outputs of these pre-trained models aren’t necessarily the probabilities that the input represents a particular label, but some intermediate representation learned while training for such a task. Ideally the knowledge representation algorithm can learn more generally from these representations.
 
 ## The Artificial Cortex
 The Artificial Cortex is my initial attempt at filling the “Knowledge Representation Algorithm” bubble described above. The Artificial Cortex seeks to generate an undirected weighted graph where vertices represent some sensory input and the edges represent associations between these inputs. I’ve convinced myself that such graphs can be valuable if constructed properly. Here are a few simple examples of how such graphs could be valuable.
 
-!(Cortex Example 1)[cortex_example_1.png]
+![Cortex Example 1](cortex_example_1.png)
 
 In this example, this cortex has two sensory inputs: a visual input of 28x28 images, and a textual input of simple strings. This cortex can be used to associate images of handwritten digits by feeding the cortex an input image, and returning which corresponding label is most strongly associated with the recognized image. This particular example is implemented in code and using this procedure without preprocessing the image data leads to 95% accuracy on the MNIST dataset.
 
-!(Cortex Example 2)[cortex_example_2.png]
+![Cortex Example 2](cortex_example_2.png)
 
-This cortex might result from some simple preprocessing of statements like "Max owns Felix and Baxter", "Dogs and cats are pets", "Felix is a cat", "Baxter is a dog". It is easy to image simple algorithms that use text preprocessing along with this graph to answer questions like "Who owns Felix?", "What kind of pet is Baxter?", or even questions requiring simple logical deductions like "Who is Max's cat?". Such algorithms could borrow heavily from existing algorthims designed to extract information from Knowledge Graphs.
+This cortex might result from some simple preprocessing of text input statements like "Max owns Felix and Baxter", "Dogs and cats are pets", "Felix is a cat", "Baxter is a dog". It is easy to image simple algorithms that use text preprocessing along with this graph to answer questions like "Who owns Felix?", "What kind of pet is Baxter?", or even questions requiring simple logical deductions like "Who is Max's cat?". Such algorithms could borrow heavily from existing algorthims designed to extract information from Knowledge Graphs.
 
 A large part of what makes these graphs valuable is that they are not bounded by an input-output space, so one could train a cortex to recognize handwritten digits, and then train the same cortex to recognize information about my pets, and then teach information at the intersection of each, resulting in a graph that can give insight into each topic.
 
