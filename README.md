@@ -44,7 +44,7 @@ In this example, this cortex has two sensory inputs: a visual input of 28x28 ima
 
 ![Cortex Example 2](cortex_example_2.png)
 
-This cortex might result from some simple preprocessing of text input statements like "Max owns Felix and Baxter", "Dogs and cats are pets", "Felix is a cat", "Baxter is a dog". It is easy to image simple algorithms that use text preprocessing along with this graph to answer questions like "Who owns Felix?", "What kind of pet is Baxter?", or even questions requiring simple logical deductions like "Who is Max's cat?". Such algorithms could borrow heavily from existing algorthims designed to extract information from Knowledge Graphs.
+This cortex might result from some simple preprocessing of text input statements like "Max owns Felix and Baxter", "Dogs and cats are pets", "Felix is a cat", "Baxter is a dog". It is easy to imagine simple algorithms that use text preprocessing along with this graph to answer questions like "Who owns Felix?", "What kind of pet is Baxter?", or even questions requiring simple logical deductions like "Who is Max's cat?". Such algorithms could borrow heavily from existing algorthims designed to extract information from Knowledge Graphs.
 
 A large part of what makes these graphs valuable is that they are not bounded by an input-output space, so one could train a cortex to recognize handwritten digits, and then train the same cortex to recognize information about my pets, and then teach information at the intersection of each, resulting in a graph that can give insight into each topic.
 
