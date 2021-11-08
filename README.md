@@ -71,5 +71,5 @@ This implementation achieves a respectable 95% accuracy on the MNIST dataset giv
 
 ## Conclusion
 
-The potential benefits of the cortex are not fully tested in this preliminary implementation, but it does show some motivating results performing benchmark classification tasks about as well as you would expect from a K-Nearest Neighor or K-Means Clustering algorithm i.e. it is indeed capable of learning useful patterns. 
+The potential benefits of the cortex are not fully tested in this preliminary implementation, but it does show some motivating results performing benchmark classification tasks about as well as you would expect from a K-Nearest Neighor or K-Means Clustering algorithm i.e. it is indeed capable of learning useful patterns. Obvious next steps include testing the limits of more complex tasks like those that require some amount of reasoning like in the second example, as well as testing out augmenting feature-extracting pre-trained vision or language models in order to learn from messier or more complicated inputs.
 
