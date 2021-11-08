@@ -14,9 +14,6 @@ Most AI practitioners agree that these are a few of the most pressing technical 
 This project is called “naive” because the ideas it takes stabs at all three of these fundamental problems, so expecting even partial success would indeed be naive. The ideas presented here were largely inspired by neuroscience material, specifically the Thousand Brains Theory of Intelligence by Jeff Hawkins.
 
 ## Key Ideas
-### Key Idea 0
-**Just because you’re not an expert in neuroscience doesn’t mean you can’t call your new algorithms “brain-inspired”.**
-A classic example being neural networks, as they are literally called “neural” networks despite very loose inspiration from the brain.
 
 ### Key Idea 1
 **It’s ok that Deep Learning takes forever if we can leverage its skills to augment faster-learning, more generalizable algorithms.**
