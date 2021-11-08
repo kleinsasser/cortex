@@ -50,8 +50,8 @@ A large part of what makes these graphs valuable is that they are not bounded by
 ## Cortex Implementation
 
 The first iteration of the artificial cortex is contained in cortex.py. For some terminology, "cortex" refers to the graph of sensory associations and each node in the graph is referred to as a "column" (from "cortical column"). The parent class for the Column object has 3 core properties: 
-- a sense-specific "reference" for determining whether the column recognizing a particular input
-- a list of "connections" to other columns in the cortex (the edges in the graph), stored as (column, strength) tuples
+- a sense-specific "reference" for determining whether the column recognizes a particular input
+- a list of "connections" to other columns in the cortex (the edges in the graph), stored as (column, weight) tuples
 - an "activation" scalar which assigns a value to how "active" the column is given a sensory input
   
 This first iteration accepts two sensory inputs, visual and textual. These senses manifest themselves as specialized column objects for recognizing such inputs, specifically, the cortex is composed "vision columns" and "text columns". Visual inputs come in the form if 28x28 grayscale images of handwritten digits, text inputs are simply strings. The training procedure is conducted as follows:
@@ -64,7 +64,7 @@ This first iteration accepts two sensory inputs, visual and textual. These sense
 
 A helpful phrase to help the training procedure is the classic "neurons that fire together wire together" (replace "neuron" with "column" in this context). Obviously I'm neglecting to explain very specific implementation details, but such nuances can easily be found in the code if the general procedure is roughly understood. To test the cortex, testing samples are shown to the cortex and activations are propagated to adjacent columns. Then the cortex's columns are parsed for the most active text column. If the most active text column is the label of the test sample, the sample has been correctly classified.
 
-This implementation achieves a respectable 95% accuracy on the MNIST dataset given 1000 samples, and an underwhelming 82% accuracy on 1000 Fashion MNIST samples (trained on top of the existing cortex for classifying vanilla MNIST). Furthermore, by associating each label "0", "1", ... , "9" with another label "digit", and associating the Fashion MNIST labels with another label "fashion", the cortex can also distinguish between "digit" and "fashion" samples with >99.5% accuracy.
+This implementation achieves a respectable 95% accuracy on the MNIST dataset given 5000 training samples, and an underwhelming 82% accuracy on 5000 Fashion MNIST samples (trained on top of the existing cortex for classifying vanilla MNIST). Furthermore, by associating each label "0", "1", ... , "9" with another label "digit", and associating the Fashion MNIST labels with another label "fashion", the cortex can also distinguish between "digit" and "fashion" samples with >99.5% accuracy.
 
 ## Conclusion
 
